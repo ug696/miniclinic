@@ -1,0 +1,90 @@
+### 健康檢查
+GET http://localhost:8080/api/health
+Accept: application/json
+
+###
+
+### 所有醫師
+GET http://localhost:8080/api/doctors
+Accept: application/json
+
+###
+
+### 依科別篩選
+GET http://localhost:8080/api/doctors?department=內科
+Accept: application/json
+
+###
+
+### 單一醫師
+GET http://localhost:8080/api/doctors/D001
+Accept: application/json
+
+###
+
+### 不存在的醫師 (應回 404)
+GET http://localhost:8080/api/doctors/D999
+Accept: application/json
+
+###
+
+### 所有科別
+GET http://localhost:8080/api/departments
+Accept: application/json
+
+### 新增醫師
+POST http://localhost:8080/api/doctors
+Content-Type: application/json
+
+{
+    "doctorId": "D006",
+    "name": "吳大明醫師",
+    "department": "家醫科",
+    "specialty": "健康檢查、疫苗"
+}
+
+###
+
+### 更新醫師
+PUT http://localhost:8080/api/doctors/D006
+Content-Type: application/json
+
+{
+    "name": "吳大明醫師",
+    "department": "家醫科",
+    "specialty": "健康檢查、疫苗、成人預防保健"
+}
+
+###
+
+### 刪除醫師
+DELETE http://localhost:8080/api/doctors/D006
+
+###
+
+### 掛號統計頁面
+GET http://localhost:8080/stats
+
+###
+
+### 掛號總數
+GET http://localhost:8080/api/appointments/count
+Accept: application/json
+
+###
+
+### 所有掛號
+GET http://localhost:8080/api/appointments
+Accept: application/json
+
+###
+
+### 依日期篩選掛號
+GET http://localhost:8080/api/appointments?date=2026-05-01
+Accept: application/json
+
+###
+
+### 依醫師篩選掛號
+GET http://localhost:8080/api/appointments?doctorId=D001
+Accept: application/json

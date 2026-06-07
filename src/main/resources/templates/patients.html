@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>病患資料 - MiniClinic</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #0F2443; border-bottom: 3px solid #14B8A6; padding-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #E2E8F0; padding: 12px; text-align: left; }
+        th { background-color: #F8FAFC; color: #0F2443; }
+        tr:hover { background-color: #F1F5F9; }
+        nav { background: #0F2443; padding: 12px; border-radius: 8px; margin-bottom: 24px; position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 18px; flex-wrap: nowrap; }
+        nav a { color: white; text-decoration: none; font-weight: bold; white-space: nowrap; }
+        nav a:hover { color: #5EEAD4; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a th:href="@{/}">首頁</a>
+        <a th:href="@{/doctors}">醫師清單</a>
+        <a th:href="@{/appointment/new}">線上掛號</a>
+        <a th:href="@{/patients}">病歷資料</a>
+        <a th:href="@{/appointments}">掛號記錄</a>
+        <a th:href="@{/stats}">統計資訊</a>
+        <a th:href="@{/login}">醫師登入</a>
+    </nav>
+
+    <h1>病患清單</h1>
+
+    <p>共 <strong th:text="${#lists.size(patients)}">0</strong> 位病患</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>病歷號</th>
+                <th>姓名</th>
+                <th>性別</th>
+                <th>聯絡電話</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${patients}">
+                <td th:text="${p.chartNo}">TEST00001</td>
+                <td th:text="${p.name}">姓名</td>
+                <td th:text="${p.gender}">性別</td>
+                <td th:text="${p.phone}">電話</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

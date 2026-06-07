@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MiniClinic 社區診所</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", sans-serif; max-width: 960px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #0F2443; border-bottom: 3px solid #14B8A6; padding-bottom: 8px; }
+        nav { background: #0F2443; padding: 12px; border-radius: 8px; position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 18px; flex-wrap: nowrap; }
+        nav a { color: white; text-decoration: none; font-weight: bold; white-space: nowrap; }
+        nav a:hover { color: #5EEAD4; }
+    </style>
+</head>
+<body>
+    <h1>MiniClinic 社區診所</h1>
+    <nav>
+        <a th:href="@{/}">首頁</a>
+        <a th:href="@{/doctors}">醫師清單</a>
+        <a th:href="@{/appointment/new}">線上掛號</a>
+        <a th:href="@{/patients}">病歷資料</a>
+        <a th:href="@{/appointments}">掛號紀錄</a>
+        <a th:href="@{/stats}">統計資訊</a>
+        <a th:href="@{/login}">醫師登入</a>
+
+    </nav>
+    <section>
+        <p>歡迎蒞臨 MiniClinic。我們提供下列科別的門診服務：</p>
+        <ul>
+            <li>家醫科</li>
+            <li>內科</li>
+            <li>復健科</li>
+            <li>小兒科</li>
+            <li>身心科</li>
+        </ul>
+    </section>
+</body>
+</html>

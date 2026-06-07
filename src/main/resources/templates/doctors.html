@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>醫師清單 - MiniClinic</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", sans-serif; max-width: 960px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #0F2443; border-bottom: 3px solid #f3ade8; padding-bottom: 8px; }
+        nav { background: #0F2443; padding: 12px; border-radius: 8px; margin-bottom: 24px; position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 18px; flex-wrap: nowrap; }
+        nav a { color: white; text-decoration: none; font-weight: bold; white-space: nowrap; }
+        nav a:hover { color: #5EEAD4; }
+        .filter { margin: 20px 0; }
+        .filter a { display: inline-block; padding: 6px 14px; margin: 4px; background: #E2E8F0; color: #0F2443; text-decoration: none; border-radius: 4px; }
+        .filter a.active { background: #e49fda; color: white; }
+        table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #E2E8F0; }
+        th { background: #0F2443; color: white; }
+        tr:hover { background: #F8FAFC; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a th:href="@{/}">首頁</a>
+        <a th:href="@{/doctors}">醫師清單</a>
+        <a th:href="@{/appointment/new}">線上掛號</a>
+        <a th:href="@{/patients}">病歷資料</a>
+        <a th:href="@{/appointments}">掛號記錄</a>
+        <a th:href="@{/stats}">統計資訊</a>
+        <a th:href="@{/login}">醫師登入</a>
+    </nav>
+
+    <h1>醫師清單</h1>
+
+    <div class="filter">
+        <strong>科別篩選：</strong>
+        <a th:href="@{/doctors}"
+           th:classappend="${selectedDept == null} ? 'active'">全部</a>
+        <a th:each="dept : ${departments}"
+           th:href="@{/doctors(department=${dept})}"
+           th:text="${dept}"
+           th:classappend="${dept == selectedDept} ? 'active'">科別</a>
+    </div>
+
+    <p th:if="${doctors.isEmpty()}">目前沒有符合條件的醫師。</p>
+
+    <table th:unless="${doctors.isEmpty()}">
+        <thead>
+            <tr>
+                <th>編號</th>
+                <th>姓名</th>
+                <th>科別</th>
+                <th>專長</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="doctor : ${doctors}">
+                <td th:text="${doctor.doctorId}">D001</td>
+                <td>
+                    <a th:href="@{/doctors/{id}(id=${doctor.doctorId})}"
+                       th:text="${doctor.name}">醫師姓名</a>
+                </td>
+                <td th:text="${doctor.department}">家醫科</td>
+                <td th:text="${doctor.specialty}">一般內科</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

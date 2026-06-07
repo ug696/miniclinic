@@ -1,0 +1,22 @@
+# Compiled output
+target/
+*.class
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database
+*.db
+*.db-journal
+
+# Sensitive config
+.env
