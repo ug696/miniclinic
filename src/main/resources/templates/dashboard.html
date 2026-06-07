@@ -7,6 +7,8 @@
         body { font-family: "Microsoft JhengHei", sans-serif; max-width: 960px; margin: 40px auto; padding: 0 20px; }
         header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #14B8A6; padding-bottom: 12px; }
         h1 { color: #0F2443; margin: 0; }
+        .header-actions { display: flex; gap: 8px; align-items: center; }
+        .password-link { background: #0F2443; color: white; padding: 6px 14px; border-radius: 4px; text-decoration: none; font-size: 14px; }
         .logout-form { margin: 0; }
         .logout-form button { background: #94A3B8; color: white; padding: 6px 14px; border: none; border-radius: 4px; cursor: pointer; }
         .links { margin-top: 8px; }
@@ -26,13 +28,15 @@
             <h1>Dashboard</h1>
             <p>歡迎，<span th:text="${doctor.name}"></span>（<span th:text="${doctor.department}"></span>）</p>
             <div class="links">
-                <a th:href="@{/password}">修改密碼</a>
                 <a th:href="@{/}">回首頁</a>
             </div>
         </div>
-        <form class="logout-form" th:action="@{/logout}" method="post">
-            <button type="submit">登出</button>
-        </form>
+        <div class="header-actions">
+            <a class="password-link" th:href="@{/password}">修改密碼</a>
+            <form class="logout-form" th:action="@{/logout}" method="post">
+                <button type="submit">登出</button>
+            </form>
+        </div>
     </header>
 
     <h2 th:text="|今日掛號：${today}|"></h2>
