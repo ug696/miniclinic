@@ -82,6 +82,20 @@
     </p>
 
     <script>
+        function completeAppointment(button) {
+            fetch('/api/appointments/' + button.dataset.id + '/status', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: 'COMPLETED' })
+            }).then(function(response) {
+                if (response.ok) {
+                    location.reload();
+                } else {
+                    alert('更新看診狀態失敗');
+                }
+            });
+        }
+
         function cancelAppointment(button) {
             fetch('/api/appointments/' + button.dataset.id + '/status', {
                 method: 'PUT',
